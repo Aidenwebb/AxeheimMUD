@@ -5,12 +5,11 @@ namespace AxeheimMUD
     {
         static void Main(string[] args)
         {
+            
             Room room = new Room();
 
-            foreach (Door door in room.Doors)
-            {
-                Console.WriteLine(door.Direction.ToString());
-            }
+            Console.WriteLine(room.DescribeRoom());
+            
             
         }
     }

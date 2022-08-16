@@ -24,6 +24,30 @@ namespace AxeheimMUD.Models
             }
         }
 
+        public string DescribeRoom()
+        {
+            string returnstring = "";
+            if (_doors.Count == 1)
+            {
+                returnstring = $"There is 1 door. Its direction is {_doors[0].Direction}";
+            }
+            else if (_doors.Count == 0)
+            {
+                returnstring = $"There are no doors. How did you get in here?";
+            }
+            else
+            {
+                returnstring = $"There are {_doors.Count} doors. Their directions are: ";
+            }
+
+            foreach (Door door in _doors)
+            {
+                returnstring += $"[{door.Direction}], ";
+            }
+
+            return returnstring;
+        }
+
         public Room()
         {
             _generateDoors();
