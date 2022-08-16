@@ -26,9 +26,9 @@ namespace AxeheimMUD.Models
             }
         }
 
-        public string DescribeRoom()
+        public string DescribeExits()
         {
-            string returnstring = "";
+            string returnstring = string.Empty;
             if (_doors.Count == 1)
             {
                 returnstring = $"There is 1 door. Its direction is {_doors[0].Direction}";
@@ -40,12 +40,22 @@ namespace AxeheimMUD.Models
             else
             {
                 returnstring = $"There are {_doors.Count} doors. Their directions are: ";
+
+                foreach (Door door in _doors)
+                {
+                    returnstring += $"[{door.Direction}], ";
+                }
             }
 
-            foreach (Door door in _doors)
-            {
-                returnstring += $"[{door.Direction}], ";
-            }
+
+            return returnstring;
+        }
+
+        public string DescribeRoom()
+        {
+            string returnstring = string.Empty;
+
+            returnstring = $@"{DescribeExits()}";
 
             return returnstring;
         }
