@@ -9,6 +9,8 @@ namespace AxeheimMUD.Models
 {
     internal class Room
     {
+        protected static int _roomCounter { get; private set; }
+        public int RoomID { get; }
         private readonly Random random = new Random();
         private List<Door> _doors = new List<Door>();
 
@@ -50,6 +52,8 @@ namespace AxeheimMUD.Models
 
         public Room()
         {
+            _roomCounter++;
+            RoomID = _roomCounter;
             _generateDoors();
         }
 
