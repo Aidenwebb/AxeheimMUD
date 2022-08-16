@@ -9,9 +9,9 @@ namespace AxeheimMUD.Models
 {
     internal class Room
     {
-        protected static int _roomCounter { get; private set; }
-        public int RoomID { get; }
-        private readonly Random random = new Random();
+        protected static int RoomCounter { get; private set; }
+        public int RoomId { get; }
+        private readonly Random _random = new Random();
         private List<Door> _doors = new List<Door>();
 
         public List<Door>? Doors
@@ -19,10 +19,6 @@ namespace AxeheimMUD.Models
             get
             {
                 return _doors;
-            }
-            protected set
-            {
-                _doors = value;
             }
         }
 
@@ -62,8 +58,8 @@ namespace AxeheimMUD.Models
 
         public Room()
         {
-            _roomCounter++;
-            RoomID = _roomCounter;
+            RoomCounter++;
+            RoomId = RoomCounter;
             _generateDoors();
         }
 
@@ -71,7 +67,10 @@ namespace AxeheimMUD.Models
         {
             for (int i = 0; i < 10; i++)
             {
-                if (random.Next(2) == 1)
+                
+                if (i > 3 && i < 8) continue; // Skip diagonal directions for now
+
+                if (_random.Next(2) == 1)
                 {
                     _doors.Add(new Door((Direction)i));
                 }
