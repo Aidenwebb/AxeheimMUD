@@ -8,6 +8,7 @@ namespace AxeheimMUD.Core.Models
 {
     internal class PlayerCharacter : IFightable, ICharacter
     {
+        private Random _random = new Random();
         public int MaxHealth { get; protected set; }
 
         public int CurrentHealth
@@ -40,7 +41,9 @@ namespace AxeheimMUD.Core.Models
 
         public void Attack(IFightable target)
         {
-            int damage = Level + DEFAULT_DAMAGE;
+            int damage = _random.Next(Level + DEFAULT_DAMAGE);
+            ICharacter character = (ICharacter)target;
+            Console.WriteLine($"Attacking {character.Name} for {damage}");
             target.Defend(this, damage);
         }
 
