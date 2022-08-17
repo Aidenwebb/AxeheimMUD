@@ -8,9 +8,9 @@ namespace AxeheimMUD.Models
 {
     internal class Player
     {
-        public int Health { get; set; }
-        public int Strength { get; set; }
-        public int Position { get; set; }
+        public int Health { get; protected set; }
+        public int Strength { get; protected set; }
+        public int Position { get; protected set; }
         public List<PlayerAction> ValidActions = new List<PlayerAction>();
 
         public Player()
