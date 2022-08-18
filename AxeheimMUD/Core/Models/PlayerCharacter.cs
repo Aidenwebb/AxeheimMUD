@@ -20,6 +20,7 @@ namespace AxeheimMUD.Core.Models
         }
         private int _currentHealth;
         const int DEFAULT_DAMAGE = 5;
+        public string ObjectType { get; protected set; }
         public int Level { get; protected set; }
 
         public string Name { get; protected set; }
@@ -27,11 +28,12 @@ namespace AxeheimMUD.Core.Models
 
         public PlayerCharacter(int level, string name, int position)
         {
-            MaxHealth = 10 + (level * 2);
+            MaxHealth = 10 + (level * 3);
             _currentHealth = MaxHealth;
             Level = level;
             Name = name;
             Position = position;
+            ObjectType = "Player Character";
         }
 
         public void Move(int roomNumber)

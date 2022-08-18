@@ -16,7 +16,7 @@ public class Monster: IFightable, ICharacter
     private int _currentHealth;
     const int DEFAULT_DAMAGE = 5;
     public int Level { get; protected set; }
-
+    public string ObjectType { get; protected set; }
     public string Name { get; protected set; }
     public int Position { get; protected set; }
 
@@ -27,6 +27,7 @@ public class Monster: IFightable, ICharacter
         Level = level;
         Name = name;
         Position = position;
+        ObjectType = "Monster";
     }
 
     public void Move(int roomNumber)

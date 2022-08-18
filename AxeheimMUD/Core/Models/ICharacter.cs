@@ -1,9 +1,8 @@
 ﻿namespace AxeheimMUD.Core.Models;
 
-public interface ICharacter
+public interface ICharacter: IMapObject
 {
     string Name { get; }
-    int Position { get; }
 
     void Move(int roomNumber);
 }
