@@ -49,9 +49,19 @@ namespace AxeheimMUD.Core.Models
             target.Defend(this, damage);
         }
 
-        public void Defend(IFightable attacker, int damage)
+        public int Defend(IFightable attacker, int damage)
         {
-            _currentHealth -= damage;
+            if (_currentHealth < damage)
+            {
+                int returnValue = _currentHealth;
+                _currentHealth = 0;
+                return returnValue;
+            }
+            else
+            {
+                _currentHealth -= damage;
+                return damage;
+            }
         }
     }
 }

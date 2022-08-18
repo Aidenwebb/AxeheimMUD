@@ -6,5 +6,5 @@ public interface IFightable
     int CurrentHealth { get; }
     int Level { get; }
     void Attack(IFightable target);
-    void Defend(IFightable attacker, int damage);
+    int Defend(IFightable attacker, int damage);
 }
